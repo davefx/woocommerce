@@ -58,6 +58,12 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 	public $title;
 
 	/**
+	 * Shipping method description for the frontend
+	 * @var string
+	 */
+	public $description;
+
+	/**
 	 * This is an array of rates - methods must populate this array to register shipping costs.
 	 * @var array
 	 */
@@ -191,6 +197,15 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 	 */
 	public function get_title() {
 		return apply_filters( 'woocommerce_shipping_method_title', $this->title, $this->id );
+	}
+
+	/**
+	 * Return the shipping description which is user set.
+	 *
+	 * @return string
+	 */
+	public function get_description() {
+		return apply_filters( 'woocommerce_shipping_method_description', $this->description, $this->id );
 	}
 
 	/**
@@ -492,7 +507,7 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 			$post_data = $this->get_post_data();
 
 			foreach ( $this->get_instance_form_fields() as $key => $field ) {
-				if ( 'title' !== $this->get_field_type( $field ) ) {
+				if ( 'title' !== $this->get_field_type( $field ) && 'description' !== $this->get_field_type( $field ) ) {
 					try {
 						$this->instance_settings[ $key ] = $this->get_field_value( $key, $field, $post_data );
 					} catch ( Exception $e ) {

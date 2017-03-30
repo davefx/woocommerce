@@ -42,6 +42,7 @@ class WC_Shipping_Local_Pickup extends WC_Shipping_Method {
 
 		// Define user set variables
 		$this->title		     = $this->get_option( 'title' );
+		$this->description       = $this->get_option( 'description' );
 		$this->tax_status	     = $this->get_option( 'tax_status' );
 		$this->cost	             = $this->get_option( 'cost' );
 
@@ -71,6 +72,13 @@ class WC_Shipping_Local_Pickup extends WC_Shipping_Method {
 				'type'        => 'text',
 				'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce' ),
 				'default'     => __( 'Local Pickup', 'woocommerce' ),
+				'desc_tip'    => true,
+			),
+			'description' => array(
+				'title'       => __( 'Description', 'woocommerce' ),
+				'type'        => 'text',
+				'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce' ),
+				'default'     => '',
 				'desc_tip'    => true,
 			),
 			'tax_status' => array(

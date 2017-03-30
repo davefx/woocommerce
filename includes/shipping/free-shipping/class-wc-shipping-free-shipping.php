@@ -57,9 +57,10 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 		$this->init_settings();
 
 		// Define user set variables.
-		$this->title      = $this->get_option( 'title' );
-		$this->min_amount = $this->get_option( 'min_amount', 0 );
-		$this->requires   = $this->get_option( 'requires' );
+		$this->title       = $this->get_option( 'title' );
+		$this->description = $this->get_option( 'description' );
+		$this->min_amount  = $this->get_option( 'min_amount', 0 );
+		$this->requires    = $this->get_option( 'requires' );
 
 		// Actions.
 		add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -75,6 +76,13 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 				'type'        => 'text',
 				'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce' ),
 				'default'     => $this->method_title,
+				'desc_tip'    => true,
+			),
+			'description' => array(
+				'title'       => __( 'Description', 'woocommerce' ),
+				'type'        => 'text',
+				'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce' ),
+				'default'     => '',
 				'desc_tip'    => true,
 			),
 			'requires' => array(

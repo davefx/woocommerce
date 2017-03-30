@@ -17,6 +17,13 @@ $settings = array(
 		'default'		=> __( 'Flat Rate', 'woocommerce' ),
 		'desc_tip'		=> true
 	),
+	'description' => array(
+		'title' 		=> __( 'Method Description', 'woocommerce' ),
+		'type' 			=> 'text',
+		'description' 	=> __( 'This controls the description which the user sees during checkout.', 'woocommerce' ),
+		'default'		=> '',
+		'desc_tip'		=> true
+	),
 	'tax_status' => array(
 		'title' 		=> __( 'Tax Status', 'woocommerce' ),
 		'type' 			=> 'select',
@@ -78,5 +85,7 @@ if ( ! empty( $shipping_classes ) ) {
 		),
 	);
 }
+
+apply_filters('woocommerce_shipping_method_description', $settings);
 
 return $settings;
