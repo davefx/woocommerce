@@ -58,6 +58,12 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 	public $title;
 
 	/**
+	 * Shipping method description for the frontend.
+	 * @var string
+	 */
+	public $description;
+
+	/**
 	 * This is an array of rates - methods must populate this array to register shipping costs.
 	 * @var array
 	 */
@@ -191,6 +197,15 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 	 */
 	public function get_title() {
 		return apply_filters( 'woocommerce_shipping_method_title', $this->title, $this->id );
+	}
+
+	/**
+	 * Return the shipping description which is user set.
+	 *
+	 * @return string
+	 */
+	public function get_description() {
+		return apply_filters( 'woocommerce_shipping_method_description', $this->description, $this->id );
 	}
 
 	/**

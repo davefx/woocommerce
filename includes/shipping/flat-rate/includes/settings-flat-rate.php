@@ -17,6 +17,13 @@ $settings = array(
 		'default'		=> __( 'Flat rate', 'woocommerce' ),
 		'desc_tip'		=> true,
 	),
+	'description' => array(
+		'title' 		=> __( 'Method description', 'woocommerce' ),
+		'type' 			=> 'text',
+		'description' 	=> __( 'This controls the description which the user sees during checkout.', 'woocommerce' ),
+		'default'		=> '',
+		'desc_tip'		=> true,
+	),
 	'tax_status' => array(
 		'title' 		=> __( 'Tax status', 'woocommerce' ),
 		'type' 			=> 'select',
