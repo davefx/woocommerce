@@ -390,8 +390,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 			 *
 			 * Uses price inc tax if prices include tax to work around https://github.com/woocommerce/woocommerce/issues/7669 and https://github.com/woocommerce/woocommerce/issues/8074.
 			 */
-			$subtotal_to_calculate_discount = apply_filters( 'woocommerce_coupon_subtotal_to_calculate_fixed_cart_discount', 
-					wc_prices_include_tax() ? WC()->cart->subtotal : WC()->cart->subtotal_ex_tax, $this, $cart_item );
+			$subtotal_to_calculate_discount = wc_prices_include_tax() ? WC()->cart->subtotal : WC()->cart->subtotal_ex_tax;
 			$discount_percent = ( wc_get_price_including_tax( $cart_item['data'] ) * $cart_item_qty ) / $subtotal_to_calculate_discount;
 			$discount = ( (float) $this->get_amount() * $discount_percent ) / $cart_item_qty;
 
